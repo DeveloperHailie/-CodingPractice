@@ -36,4 +36,14 @@ plt.xlabel('length of samples')
 plt.ylabel('number of samples')
 plt.show()
 
+from gensim.models import Word2Vec
+model = Word2Vec(sentences = tokenized_data, size = 100, window = 5, min_count = 5, workers = 4, sg = 0)
+
+# 완성된 임베딩 매트릭스의 크기 확인
+model.wv.vectors.shape
+
+print(model.wv.most_similar("최민식"))
+
+print(model.wv.most_similar("히어로"))
+
 # 출처 : https://wikidocs.net/50739
