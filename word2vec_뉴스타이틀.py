@@ -4,8 +4,28 @@ import urllib.request
 from gensim.models.word2vec import Word2Vec
 from konlpy.tag import Okt
 
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 
-train_data = pd.read_csv('C:\\Users\\SUNGSHIN\\Desktop\\혜영\\학부연구생\\kor_news.csv', encoding="ANSI", index_col=0, names=['ranking','date','category','press','title'])
+plt.rc('axes', unicode_minus=False)
+'''
+for font in fm.fontManager.ttflist:
+    if 'Nanum' in font.name:
+        print(font.name, font.fname)
+'''
+# NanumBarunGothic C:\Windows\Fonts\NanumBarunGothicBold.ttf
+# NanumBarunGothic C:\WINDOWS\Fonts\NanumBarunGothic.ttf
+
+font_location = 'C:\\WINDOWS\\Fonts\\NanumBarunGothic.ttf'
+font_name = fm.FontProperties(fname=font_location).get_name()
+#mpl.rc('font', family=font_name)
+mpl.rc('font', family="NanumBarunGothic")
+
+
+
+
+train_data = pd.read_csv('C:\\Users\\hailie\\Desktop\\랩실\\UROP\\kor_news.csv', encoding="ANSI", index_col=0, names=['ranking','date','category','press','title'])
 print(train_data[:5]) # 상위 5개 출력
 # NULL 값 존재 유무
 print(train_data.isnull().values.any())
@@ -59,7 +79,7 @@ ys=xys[:,1]
 import matplotlib.font_manager as fm
 fm._rebuild()
 
-plt.rc('font', family='NanumGothic')
+plt.rc('font', family="NanumBarunGothic")
 
 import matplotlib.pyplot as plt
 
